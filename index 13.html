@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Eslab qol — Lug'at va Grammatika testi</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f1f4fa;--ink:#17203d;--mut:#5d6785;--pan:#fff;--ln:#dde3f0;--ok:#16895a;--no:#c92a5b;--on:#fff}
+body[data-t=v]{--ac:#1d6fe8}body[data-t=g]{--ac:#e0590f}
+@media(prefers-color-scheme:dark){:root{--bg:#10162a;--ink:#eaeefb;--mut:#9aa5c6;--pan:#1a2240;--ln:#2c3659;--ok:#3ccf8e;--no:#ff6b94;--on:#0d1226}body[data-t=v]{--ac:#6aa5ff}body[data-t=g]{--ac:#ff8f55}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "Plus Jakarta Sans",system-ui,sans-serif}
+#app{max-width:680px;margin:0 auto;padding:20px 16px 48px}
+h1{font-size:30px;margin:8px 0 2px;letter-spacing:-.02em;font-weight:800}
+.sub{color:var(--mut);margin:0 0 18px}
+button{font:inherit}
+.tabs{display:flex;gap:6px;background:var(--ln);padding:5px;border-radius:14px;margin-bottom:14px}
+.tabs button{flex:1;border:0;background:none;color:var(--mut);font-weight:700;padding:11px;border-radius:10px;cursor:pointer}
+.tabs button.on{background:var(--pan);color:var(--ac);box-shadow:0 1px 3px #0002}
+.card{background:var(--pan);border:1px solid var(--ln);border-radius:18px;padding:20px;margin-bottom:14px}
+h3{margin:0 0 4px;font-size:18px}
+.hint{color:var(--mut);font-size:14px;margin:0 0 12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.chip{border:1.5px solid var(--ln);background:none;color:var(--ink);font-size:14px;padding:8px 12px;border-radius:999px;cursor:pointer;text-align:left}
+.chip.on{border-color:var(--ac);background:var(--ac);color:var(--on)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.go{background:var(--ac);color:var(--on);border:0;border-radius:12px;padding:13px 20px;font-weight:700;cursor:pointer}
+.alt{background:none;border:1.5px solid var(--ln);color:var(--ink);border-radius:12px;padding:12px 16px;font-weight:600;cursor:pointer}
+button:disabled{opacity:.45;cursor:default}
+button:focus-visible,select:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+select{font:inherit;padding:11px;border-radius:12px;border:1.5px solid var(--ln);background:var(--pan);color:var(--ink)}
+.top{display:flex;justify-content:space-between;align-items:center;color:var(--mut);margin-bottom:8px}
+.top button{background:none;border:0;color:var(--mut);cursor:pointer;font-weight:600;padding:6px 0}
+.bar{height:8px;background:var(--ln);border-radius:9px;overflow:hidden;margin-bottom:14px}
+.bar i{display:block;height:100%;background:var(--ac);transition:width .3s}
+h2{font-size:22px;line-height:1.35;margin:2px 0 16px}
+h2.big{font-size:32px}
+.blank{display:inline-block;width:64px;border-bottom:3px solid var(--ac);margin:0 4px}
+.opt{display:block;width:100%;text-align:left;background:none;color:var(--ink);border:1.5px solid var(--ln);border-radius:12px;padding:13px 15px;margin-bottom:9px;cursor:pointer}
+.opt:hover:enabled{border-color:var(--ac)}
+.opt.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 14%,transparent)}
+.opt.no{border-color:var(--no);background:color-mix(in srgb,var(--no) 14%,transparent)}
+.msg{font-weight:700;margin:14px 0 8px}.msg.ok{color:var(--ok)}.msg.no{color:var(--no)}
+.note{background:var(--bg);border-left:4px solid var(--ac);border-radius:10px;padding:12px 14px;margin-bottom:12px}
+.big-n{font-size:52px;font-weight:800;color:var(--ac);margin:0}
+.wc{padding:14px 0;border-bottom:1px solid var(--ln);cursor:pointer}
+.wc b{font-size:18px}
+.wc .u{float:right;color:var(--ac);font-weight:700;max-width:55%;text-align:right}
+.wc .d{margin:4px 0 0;color:var(--mut);font-size:14px}
+.hide .wc:not(.show) :is(.u,.d){filter:blur(7px)}
+.foot{color:var(--mut);font-size:13px;margin-top:20px}
+@media(prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style>
+</head>
+<body data-t="v">
+<main id="app"></main>
+<script>
+/* ===== MA'LUMOTLAR: Focus on Vocabulary 1 (so'z | ta'rif | o'zbekcha) ===== */
+const V={
+"Chapter 1 · Can We Be Happier?":`assert|to say firmly that something is true|qat'iy ta'kidlamoq, da'vo qilmoq
+astonishing|very surprising|hayratlanarli
+boost|to make something increase or improve|oshirmoq, kuchaytirmoq
+cheerful|happy and positive|quvnoq, xushchaqchaq
+deed|something a person does, good or bad|ish, qilmish
+devote|to give most of your time and effort to something|bag'ishlamoq
+discipline|control of behavior; training to follow rules|intizom
+esteem|a feeling of respect or good opinion|hurmat, e'zoz
+graft|to add something new so it becomes part of it|payvand qilmoq, qo'shib qo'ymoq
+inherit|to receive something from your parents|meros qilib olmoq
+instinctively|naturally, without learning or thinking|instinktiv, tabiiy ravishda
+intervention|action taken to change or stop a situation|aralashuv
+longing|a strong feeling of wanting something|orziqish, sog'inch
+manner|the way something is done|usul, muomala tarzi
+monk|a man in a religious group living apart from others|rohib
+mystery|something people cannot understand or explain|sir, jumboq
+obscure|not clear; hard to understand|noaniq, tushunish qiyin
+pace|the speed of doing something|sur'at, qadam tezligi
+philosophy|the study of existence, truth, good and evil|falsafa
+restaurant|a place where you buy and eat a meal|restoran
+review|to look at something again carefully|qayta ko'rib chiqmoq, takrorlamoq
+steak|a thick piece of good red meat|bifshteks
+therapy|treatment that helps someone feel better|davolash, terapiya
+thrill|a sudden strong feeling of excitement|hayajon, zavq`,
+"Chapter 2 · Into the Flow":`absorbed|giving all your attention to something|berilib ketgan
+ache|a continuing dull pain|doimiy og'riq
+amusement|the feeling of finding something funny|ko'ngil ochish, huzur
+confront|to face a problem or person directly|yuzma-yuz kelmoq
+distracted|unable to pay attention|chalg'igan, diqqati tarqalgan
+drift|to move slowly without direction|oqib ketmoq, sekin siljimoq
+explode|to burst suddenly with a loud noise|portlamoq
+feedback|comments about how well someone is doing|fikr-mulohaza
+fictional|invented; not real|to'qima, badiiy
+fiercely|in a very strong or aggressive way|shiddat bilan, qattiq
+fulfillment|the feeling of being satisfied with your achievements|qoniqish, orzu ro'yobi
+gripped|held tightly; held your full attention|mahkam ushlagan, o'ziga jalb etgan
+intellectual|related to the mind and thinking|aqliy, ziyoli
+interval|a gap of time between two events|oraliq, tanaffus
+lung|an organ in the chest used for breathing|o'pka
+medal|a metal disc given as a prize|medal
+motivation|the reason or desire to do something|turtki, motivatsiya
+overcome|to defeat or deal with a problem|yengmoq, bartaraf etmoq
+peer|a person of the same age or group|tengdosh
+strive|to try very hard to achieve something|intilmoq, jon kuydirmoq
+tension|a nervous, worried feeling; strain|taranglik, zo'riqish
+thus|as a result; in this way|shunday qilib, shu sababli
+trivial|small and not important|arzimas, ahamiyatsiz
+worthwhile|useful enough to spend time on|arzigulik, foydali`,
+"Chapter 7 · Did You Have Trouble Getting Up This Morning?":`aggravation|annoyance; something that makes things worse|g'ashlik, bezovtalik
+alert|quick to notice and ready to act|hushyor, ogoh
+alien|from another planet or country; strange|begona, o'zga sayyoralik
+caretaker|a person who looks after a building or person|qarovchi
+caution|great care to avoid danger|ehtiyotkorlik
+circuit|a closed path for electric current|elektr zanjiri
+consequence|a result of an action|oqibat, natija
+constructive|useful and helpful|foydali, konstruktiv
+deprivation|the lack of something you need|mahrum bo'lish, yetishmovchilik
+enthusiasm|strong interest and excitement|g'ayrat, ishtiyoq
+executive|a senior manager in a company|rahbar, direktor
+habit|something you do regularly without thinking|odat
+hobby|an activity you do for pleasure|sevimli mashg'ulot
+laboratory|a room for scientific work|laboratoriya
+leisure|free time when you are not working|bo'sh vaqt, dam olish
+moody|having moods that change quickly|kayfiyati o'zgaruvchan
+prompt|done quickly or on time|tez, o'z vaqtida
+provisional|temporary; likely to change|vaqtinchalik
+prune|to cut branches off a plant; to reduce|butamoq, qisqartirmoq
+rehearse|to practice before a performance|mashq qilmoq, tayyorlanmoq
+speculate|to guess without enough facts|taxmin qilmoq
+temper|a tendency to get angry quickly|jahldorlik, fe'l-atvor
+translate|to change words into another language|tarjima qilmoq
+trim|to cut a little off to make neat|qirqib tekislamoq`,
+"Chapter 9 · Science Fiction into Reality":`accent|a way of pronouncing words from a region|talaffuz tarzi, aksent
+battery|a device that stores electricity|batareya
+convenient|easy to use; suitable for your needs|qulay
+cope|to deal successfully with a difficult situation|uddalamoq, bardosh bermoq
+crew|a group working together on a ship or plane|ekipaj
+dialect|a form of a language spoken in one area|sheva, lahja
+dissolve|to mix into a liquid and disappear|erimoq
+dubious|doubtful; not certain or honest|shubhali
+feasible|possible to do|amalga oshirish mumkin bo'lgan
+flip|to turn over quickly|ag'darmoq, o'girmoq
+global|affecting the whole world|global, jahon miqyosidagi
+graphic|relating to pictures; very clear and detailed|grafik, aniq tasvirlangan
+magnetic|able to attract iron|magnitli
+mission|an important task with a purpose|vazifa, missiya
+mobile|able to move easily|harakatchan, mobil
+oral|spoken, not written|og'zaki
+portable|easy to carry|ko'chma, tashishga qulay
+refrigerator|a machine that keeps food cold|muzlatkich`};
+
+/* ===== Grammar in Context (savol | to'g'ri | xato1 | xato2 | xato3 | tushuncha) ===== */
+const G={
+"Unit 1 · Present simple":`Water ___ at 100°C.|boils|is boiling|boil|has boiled|Ilmiy haqiqat Present Simple'da bo'ladi; he/she/it bilan fe'lga -s qo'shiladi: boils.
+She ___ coffee in the morning.|doesn't drink|don't drink|isn't drinking|doesn't drinks|He/she/it bilan inkor: doesn't + fe'lning asosiy shakli. Fe'lga -s qo'shilmaydi.
+How often ___ you go to the gym?|do|does|are|have|You bilan so'roq gap do bilan tuziladi: do you go?
+My brother ___ in a bank.|works|work|is work|working|Doimiy ish — Present Simple; he bilan fe'l -s oladi: works.`,
+"Unit 2 · Present continuous":`Listen! The baby ___.|is crying|cries|cry|has cried|Hozir davom etayotgan ish: am/is/are + fe'l-ing.
+I ___ a book at the moment.|am reading|read|reads|have read|"At the moment" — hozirgi payt belgisi: am/is/are + -ing.
+Sorry, I ___ you. Can you repeat that?|don't understand|am not understanding|not understand|doesn't understand|Understand kabi holat fe'llari odatda continuous'da ishlatilmaydi.
+I usually walk to work, but today I ___ the bus.|am taking|take|takes|took|Odatdagidan farqli vaqtinchalik holat (today) — Present Continuous.`,
+"Unit 3 · Past simple":`We ___ to Samarkand last summer.|went|go|have gone|were going|"Last summer" — tugagan o'tgan vaqt: Past Simple. Go ning o'tgan shakli — went.
+I ___ the film. It was boring.|didn't enjoy|not enjoyed|don't enjoyed|didn't enjoyed|Inkor: didn't + asosiy fe'l (enjoy). -ed qo'shilmaydi.
+___ you see Ali yesterday?|Did|Do|Have|Were|Yesterday — o'tgan zamon; so'roq did bilan tuziladi: Did you see...?
+He ___ a letter to his mother last week.|wrote|writed|written|has wrote|Write — wrote — written. Past Simple uchun 2-shakl (wrote) kerak.`,
+"Unit 4 · Past continuous, used to":`I ___ TV when the phone rang.|was watching|watched|am watching|have watched|Uzoq davom etgan ish — Past Continuous; uni to'xtatgan qisqa voqea — Past Simple (rang).
+When I was a child, I ___ in the river every summer.|used to swim|use to swim|was used to swim|am used to swim|O'tmishdagi, hozir yo'q odat: used to + fe'l.
+What ___ you ___ at 8 o'clock last night?|were / doing|did / do|are / doing|have / done|O'tmishdagi aniq paytda davom etgan ish: was/were + -ing.
+He ___ like spinach, but now he loves it.|didn't use to|didn't used to|wasn't use to|not used to|Inkor va so'roqda "used" → "use" bo'ladi: didn't use to.`,
+"Unit 5 · Present perfect simple":`I ___ my keys. I can't open the door.|have lost|lost|am losing|had lost|O'tgan ishning natijasi hozir ham sezilyapti: have/has + 3-shakl.
+She ___ in Tashkent since 2020.|has lived|lived|is living|lives|"Since" + boshlangan vaqt: Present Perfect (has lived).
+I ___ never ___ sushi.|have / eaten|did / eat|am / eating|had / ate|Hayotiy tajriba (never/ever): have + 3-shakl.
+We ___ the film yesterday.|saw|have seen|had seen|see|"Yesterday" — aniq o'tgan vaqt; Present Perfect ishlatilmaydi, Past Simple kerak.`,
+"Unit 6 · Present perfect continuous":`I'm tired. I ___ all day.|have been working|have worked|am working|worked|Hozirgi holatga sabab bo'lgan, davom etgan jarayon: have been + -ing.
+How long ___ you ___ English?|have / been learning|did / learn|are / learning|do / learn|"How long" — qancha vaqtdan beri: have been + -ing.
+It ___ since this morning.|has been raining|is raining|rains|rained|"Since" bilan boshlanib hozirgacha davom etayotgan ish: has been raining.
+I ___ my homework. Now I can watch TV.|have finished|have been finishing|am finishing|finish|Tugagan natija — Present Perfect Simple. Finish davomiy jarayon emas.`,
+"Unit 7 · Past perfect":`When I arrived, the film ___.|had already started|has already started|was starting|starts|Ikki o'tgan voqeadan oldin bo'lgani: had + 3-shakl.
+She was sad because she ___ her phone.|had lost|has lost|loses|was lose|Sabab o'tmishdagi boshqa voqeadan oldin bo'lgan: had + 3-shakl.
+By the time we got to the station, the train ___.|had left|has left|leaves|was leave|"By the time" + o'tgan zamon: oldin tugagan ish — had left.
+I ___ never ___ such a big dog before I visited the farm.|had / seen|have / seen|did / see|was / seeing|Fermaga borishdan oldingi tajriba: had + 3-shakl.`,
+"Unit 8 · Tense contrasts":`I ___ here since 9 o'clock.|have been|am|was|had been|"Since" — hozirgacha davom etayotgan holat: Present Perfect (have been).
+Yesterday I ___ my friend, and we ___ to the cinema.|met / went|have met / have gone|meet / go|had met / went|Tugagan kun (yesterday): ikkala fe'l Past Simple — met, went.
+I ___ Ali for ten years.|have known|know|knew|am knowing|Know — holat fe'li, continuous bo'lmaydi; "for ten years" → have known.
+She ___ when the accident happened.|was driving|drove|has been driving|had driven|Voqea sodir bo'lgan paytda davom etayotgan ish: was driving.`,
+"Unit 9 · will, shall, be going to":`Look at the sky! It ___ rain.|is going to|will|shall|is going|Hozirgi dalil (qora bulutlar) asosidagi bashorat: be going to.
+I'm thirsty. I ___ get some water.|will|am going to|would|shall to|Gap paytida qabul qilingan qaror: will.
+We have decided to move. We ___ buy a new house.|are going to|will|shall|are|Oldindan qilingan reja: be going to.
+___ I open the window?|Shall|Will|Am|Do|Taklif qilishda Shall I / Shall we ishlatiladi.`,
+"Unit 10 · Future time":`The train ___ at 6:15 tomorrow.|leaves|left|leaving|has left|Jadval bo'yicha reys: Present Simple (leaves).
+I ___ my grandparents this weekend. We've arranged it.|am visiting|visit|will visit|visited|Kelishib olingan reja: Present Continuous.
+I'll call you when I ___ home.|get|will get|am getting|got|When / as soon as / before'dan keyin kelasi zamon o'rniga Present Simple ishlatiladi.
+By next year, I ___ my degree.|will have finished|will finish|finish|am finishing|Kelajakdagi ma'lum paytgacha tugaydigan ish: will have + 3-shakl.`,
+"Unit 27 · Countable and uncountable":`I need some ___ for my trip.|information|informations|an information|many informations|Information sanalmaydigan ot: -s qo'shilmaydi, a/an ishlatilmaydi.
+Can I have a ___ of bread?|slice|many|few|much|Sanalmaydigan otlarga o'lchov so'zi kerak: a slice of bread.
+The news ___ good.|is|are|were|have|News -s bilan tugasa ham sanalmaydigan ot: is.
+How ___ furniture do you have?|much|many|few|a|Furniture sanalmaydi: how much.`,
+"Unit 31 · some, any":`Would you like ___ tea?|some|any|a|an|Taklif va iltimosli savollarda some ishlatiladi.
+I don't have ___ money.|any|some|a|no|Inkor gapda any ishlatiladi (no bilan ikkinchi inkor bo'lib qoladi).
+Is there ___ milk in the fridge?|any|some|a few|many|Oddiy so'roq gapda any ishlatiladi.
+___ student can join the club. All are welcome.|Any|Some|No|A few|Tasdiq gapda any "har qanday" ma'nosini beradi.`,
+"Unit 32 · much, many, few, little, enough":`There aren't ___ chairs for everyone.|enough|much|little|a little|Enough — yetarli. Sanaladigan otlar oldida much/little ishlatilmaydi.
+I have ___ time, so I can't help you.|little|a little|few|a few|Little ("a" siz) — deyarli yo'q; a little — ozgina bor.
+She has ___ friends in the city. She feels lonely.|few|a few|little|much|Few ("a" siz) + sanaladigan ko'plik ot — deyarli yo'q.
+How ___ people came to the party?|many|much|little|a little|People sanaladi: how many.`,
+"Unit 33 · none, all, each, every":`___ of the students passed the exam. It was too hard.|None|Any|Every|A|None of + ot = hech biri.
+___ student has a locker.|Every|All|None of|Some of|Every + birlik ot, fe'l ham birlik: Every student has.
+All of the books ___ on the shelf.|are|is|was|has|All of + ko'plik ot + ko'plik fe'l: are.
+She gave ___ of the children a present.|each|every|none|any|Each of + the + ko'plik ot (birma-bir). "Every of" ishlatilmaydi.`};
+
+const GOOD=["Barakalla! To'g'ri javob.","Ajoyib, shunday davom et!","Aynan to'g'ri! Xotirang zo'r ishlayapti.","Sen buni uddalayapsan!","Mukammal! Bilimlaring mustahkamlanmoqda.","Zo'r ketyapsan, to'xtama!","Mana bu — haqiqiy bilim!","Har kuni oz-ozdan — katta natija.","Qoyil! Bu endi senda mustahkam.","Super! Keyingisiga tayyormisan?","Bravo! Mehnating natija bermoqda.","Fikrlash tezligingga qoyil!","Yana bitta g'alaba!","Shu zaylda davom et — maqsad yaqin!"];
+const BAD=["Hech gap emas — xato ham o'rganish qadami.","Bu savol endi yodingda qoladi.","Yaqin edi! Quyidagini o'qib, esda saqla.","Xatodan o'rganganlar eng tez o'sadi."];
+
+/* ===== YORDAMCHI FUNKSIYALAR ===== */
+const $=s=>document.querySelector(s),app=$('#app');
+const shuf=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+const st=(k,v)=>{try{if(v===undefined)return JSON.parse(localStorage.getItem(k));localStorage.setItem(k,JSON.stringify(v))}catch(e){return null}};
+const parse=(src,v)=>Object.entries(src).flatMap(([g,t])=>t.trim().split('\n').map(l=>{const p=l.split('|');return v?{id:'v:'+p[0],g,w:p[0],d:p[1],u:p[2]}:{id:'g:'+p[0],g,q:p[0],c:p[1],x:p.slice(2,5),e:p[5]}}));
+const ALL={v:parse(V,1),g:parse(G,0)},BY={};
+[...ALL.v,...ALL.g].forEach(i=>BY[i.id]=i);
+const groups=t=>[...new Set(ALL[t].map(i=>i.g))];
+const M=()=>st('miss')||{};
+const bags={};
+const say=(k,a)=>{if(!bags[k]||!bags[k].length)bags[k]=shuf(a);return bags[k].pop()};
+const pick3=a=>shuf([...new Set(a)]).slice(0,3);
+const uniq=()=>[...new Map(miss.map(i=>[i.id,i])).values()];
+let T='v',SEL={v:new Set(),g:new Set()},N=20,Q=[],k=0,sc=0,miss=[];
+
+function mk(i){
+ if(i.q)return{i,h:"Bo'sh joyni to'ldiring",p:i.q.replace(/___/g,'<span class="blank"></span>'),o:shuf([i.c,...i.x]),a:i.c};
+ const r=ALL.v.filter(x=>x!==i);
+ if(Math.random()<.5)return{i,h:"Uzbekcha tarjimasi qaysi?",p:i.w,big:1,o:shuf([i.u,...pick3(r.map(x=>x.u))]),a:i.u};
+ return{i,h:"Bu ta'rif qaysi so'zga tegishli?",p:i.d,o:shuf([i.w,...pick3(r.map(x=>x.w))]),a:i.w};
+}
+
+/* ===== EKRANLAR ===== */
+function home(){
+ document.body.dataset.t=T;
+ const gs=groups(T),s=SEL[T],mc=Object.keys(M()).filter(id=>id[0]==T).length;
+ app.innerHTML=`<h1>Eslab qol</h1><p class="sub">Lug'at va grammatika bo'yicha test</p>
+ <div class="tabs"><button class="${T=='v'?'on':''}" onclick="tab('v')">Lug'at</button><button class="${T=='g'?'on':''}" onclick="tab('g')">Grammatika</button></div>
+ <section class="card"><h3>${T=='v'?'Focus on Vocabulary 1':'Grammar in Context'}</h3>
+ <p class="hint">Bo'limlarni tanlang. Hech biri tanlanmasa — hammasi ishlaydi.</p>
+ <div class="chips">${gs.map((g,x)=>`<button class="chip ${s.has(g)?'on':''}" onclick="tog(${x})">${g}</button>`).join('')}</div>
+ <div class="row"><select onchange="N=+this.value" aria-label="Savollar soni">${[10,20,999].map(n=>`<option value="${n}" ${n==N?'selected':''}>${n==999?'Hammasi':n+' ta savol'}</option>`).join('')}</select>
+ <button class="go" onclick="start()">Testni boshlash</button></div></section>
+ <div class="row">${T=='v'?'<button class="alt" onclick="study()">So\'zlarni o\'rganish</button>':''}<button class="alt" onclick="start(1)" ${mc?'':'disabled'}>Xatolarim (${mc})</button></div>
+ <p class="foot">Savollar kitob mavzulari asosida tuzilgan. Xatolaringiz shu qurilmada saqlanadi.</p>`;
+}
+function tab(x){T=x;home()}
+function tog(x){const g=groups(T)[x],s=SEL[T];s.has(g)?s.delete(g):s.add(g);home()}
+
+function start(m){
+ const s=SEL[T];
+ const items=m?Object.keys(M()).filter(id=>id[0]==T).map(id=>BY[id]).filter(Boolean):ALL[T].filter(i=>!s.size||s.has(i.g));
+ run(items,m);
+}
+function run(items,all){Q=shuf(items).slice(0,all?999:N).map(mk);k=0;sc=0;miss=[];quiz()}
+
+function quiz(){
+ const q=Q[k];
+ app.innerHTML=`<div class="top"><button onclick="home()">← Bosh sahifa</button><span>${k+1} / ${Q.length}</span></div>
+ <div class="bar"><i style="width:${k/Q.length*100}%"></i></div>
+ <section class="card"><p class="hint">${q.h}</p><h2 class="${q.big?'big':''}">${q.p}</h2>
+ ${q.o.map((o,j)=>`<button class="opt" onclick="ans(${j})">${o}</button>`).join('')}<div id="fb"></div></section>`;
+}
+
+function ans(j){
+ const q=Q[k];if(q.done)return;q.done=1;
+ const ok=q.o[j]===q.a,i=q.i,m=M();
+ document.querySelectorAll('.opt').forEach((b,x)=>{b.disabled=true;if(q.o[x]===q.a)b.classList.add('ok');else if(x===j)b.classList.add('no')});
+ if(!q.r){
+  if(ok){sc++;if(m[i.id]&&--m[i.id]<1)delete m[i.id]}
+  else{m[i.id]=(m[i.id]||0)+1;miss.push(i);Q.push({...mk(i),r:1})}
+  st('miss',m);
+ }
+ const note=i.q?(ok?'':`<div class="note"><b>Tushuncha:</b> ${i.e}</div>`):`<div class="note"><b>${i.w}</b> — ${i.u}<br><span>${i.d}</span></div>`;
+ $('#fb').innerHTML=`<p class="msg ${ok?'ok':'no'}">${ok?say('g',GOOD):say('b',BAD)}</p>${note}<button class="go" onclick="next()">${k+1<Q.length?'Keyingisi':'Natijani ko\'rish'}</button>`;
+}
+function next(){k++;k<Q.length?quiz():end()}
+
+function end(){
+ const t=Q.filter(q=>!q.r).length,mm=uniq();
+ app.innerHTML=`<section class="card"><p class="hint">Natija</p><p class="big-n">${sc} / ${t}</p>
+ <p>${sc==t?"Xatosiz! Ajoyib natija.":sc/t>=.7?"Yaxshi natija — xatolarni takrorlab, mustahkamlang.":"Hali o'rganish joyi bor — xatolarni qayta ishlasang, ular esda qoladi."}</p>
+ ${mm.length?'<h3>Xatolar</h3>'+mm.map(i=>`<div class="note">${i.q?`${i.q}<br><b>${i.c}</b> — ${i.e}`:`<b>${i.w}</b> — ${i.u}<br>${i.d}`}</div>`).join(''):''}
+ <div class="row"><button class="go" onclick="run(uniq(),1)" ${mm.length?'':'disabled'}>Xatolarni takrorlash</button><button class="alt" onclick="home()">Bosh sahifa</button></div></section>`;
+}
+
+function study(){
+ const s=SEL.v;let last='';
+ app.innerHTML=`<div class="top"><button onclick="home()">← Bosh sahifa</button><button onclick="document.getElementById('L').classList.toggle('hide')">Tarjimani yashirish</button></div>
+ <section class="card" id="L">${ALL.v.filter(i=>!s.size||s.has(i.g)).map(i=>{
+  const h=i.g!=last?(last=i.g,`<h3>${i.g}</h3>`):'';
+  return h+`<article class="wc" onclick="this.classList.toggle('show')"><b>${i.w}</b><span class="u">${i.u}</span><p class="d">${i.d}</p></article>`}).join('')}</section>`;
+}
+
+onkeydown=e=>{
+ if(!document.querySelector('.opt'))return;
+ if(/^[1-4]$/.test(e.key)&&!Q[k]?.done)document.querySelectorAll('.opt')[e.key-1]?.click();
+ else if(e.key=='Enter'&&e.target.tagName!='BUTTON')$('#fb .go')?.click();
+};
+home();
+</script>
+</body>
+</html>
